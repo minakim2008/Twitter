@@ -1,6 +1,6 @@
-# Project 3 - Tweeter
+# Project 3 - Twitter
 
-Tweeter is a basic twitter app to read your tweets.
+A basic twitter app to read your tweets.
 
 Time spent: 2 hours spent in total
 
