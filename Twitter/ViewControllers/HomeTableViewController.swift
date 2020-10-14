@@ -19,6 +19,9 @@ class HomeTableViewController: UITableViewController {
         super.viewDidLoad()
         loadTweets()
         
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 150
+        
         //Another way to refresh
         refreshContoller.addTarget(self, action: #selector(loadTweets), for: .valueChanged)
         tableView.refreshControl = refreshContoller
@@ -30,7 +33,14 @@ class HomeTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        print("View did appear")
+        self.loadTweets()
+    }
+    
     @objc func loadTweets(){
+        print("Loading tweets")
         numOfTweets = 15
         let twitterHomeUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
         let params = ["count": numOfTweets]
@@ -97,27 +107,47 @@ class HomeTableViewController: UITableViewController {
         
         //Goes back to login screen
         self.dismiss(animated: true, completion: nil)
-        UserDefaults.standard.setValue(false, forKey: "logginIn")
+        UserDefaults.standard.setValue(false, forKey: "loggedIn")
+        print("loggedIn: \(UserDefaults.standard.value(forKey: "loggedIn"))")
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! TweetCell
         
         let tweet = tweetsArray[indexPath.row]
-        //Not sending tweet?
-        cell.tweet = tweet
         
-        //Can put all this in TweetCell?
+        //Sets like and tweet counts for tweets
+        //Maybe divide if >999 (quotientAndRemainder(dividingBy:)
+        //If quotient > 0 ...
+        // integer = 123
+        // integer.digits = [1,2,3]
+        //var likes_set : (Int, Int) = (tweet["favorite_count"] as! Int).quotientAndRemainder(dividingBy: 1000)
+        //var retweets_set : (Int, Int) = (tweet["retweet_count"] as! Int).quotientAndRemainder(dividingBy: 1000)
+        //let q = retweets_set.0
+        
+        let likes = tweet["favorite_count"] as! Int
+        let retweets = tweet["retweet_count"] as! Int
+        
+        cell.likesCountLabel.text = String(likes)
+        cell.retweetsCountLabel.text = String(retweets)
+        
+        //Sets username and tweet
         let user = tweet["user"] as! NSDictionary
         cell.usernameLabel.text = user["name"] as! String
+        cell.twitternameLabel.text = "@" + (user["screen_name"] as! String)
         cell.tweetLabel.text = tweet["text"] as! String
         
+        //Sets profile picture
         let imageUrl = URL(string: user["profile_image_url_https"] as! String)
         let data = try? Data(contentsOf: imageUrl!)
-        
         if let imageData = data{
             cell.userImage.image = UIImage(data: imageData)
         }
+        
+        //Sends tweet id, sets liked button color, sends retweeted status
+        cell.tweetId = tweetsArray[indexPath.row]["id"] as! Int
+        cell.setLiked(tweetsArray[indexPath.row]["favorited"] as! Bool)
+        cell.setRetweeted(tweetsArray[indexPath.row]["retweeted"] as! Bool)
         
         return cell
     }

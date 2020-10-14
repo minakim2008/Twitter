@@ -64,4 +64,53 @@ class TwitterAPICaller: BDBOAuth1SessionManager {
         })
     }
     
+    //Posts tweet from twitter account
+    func postTweet(tweetString : String, success: @escaping () -> (), failure: @escaping (Error) -> ()){
+        let urlString = "https://api.twitter.com/1.1/statuses/update.json"
+        TwitterAPICaller.client?.post(urlString, parameters: ["status": tweetString], progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            success()
+        }, failure: { (_: URLSessionDataTask?, error : Error) in
+            print("Failed to call post tweet API: \(error)")
+        })
+    }
+    
+    //Sets tweet as "liked"
+    func favoriteTweet(tweetId: Int, success: @escaping () -> (), failure: @escaping (Error) -> ()){
+        let urlString = "https://api.twitter.com/1.1/favorites/create.json?id=\(tweetId)"
+        TwitterAPICaller.client?.post(urlString, parameters: ["id": tweetId], progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            success()
+            print("Liked tweet")
+        }, failure: { (_: URLSessionDataTask?, error : Error) in
+            print("Failed to call create favorites API: \(error)")
+        })
+    }
+    //Sets tweet as neutral, i.e. "not liked"
+    func unfavoriteTweet(tweetId: Int, success: @escaping () -> (), failure: @escaping (Error) -> ()){
+        let urlString = "https://api.twitter.com/1.1/favorites/destroy.json?id=\(tweetId)"
+        TwitterAPICaller.client?.post(urlString, parameters: ["id": tweetId], progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            success()
+            print("Unliked tweet")
+        }, failure: { (_: URLSessionDataTask?, error : Error) in
+            print("Failed to call destroy favorites API: \(error)")
+        })
+    }
+    
+    //Retweets a tweet
+    func retweet(tweetId: Int, success: @escaping () -> (), failure: @escaping (Error) -> ()){
+        let urlString = "https://api.twitter.com/1.1/statuses/retweet/\(tweetId).json"
+        TwitterAPICaller.client?.post(urlString, parameters: ["id": tweetId], progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            success()
+        }, failure: { (_: URLSessionDataTask?, error : Error) in
+            print("Failed to call retweets API: \(error)")
+        })
+    }
+    //Undoes a retweet
+    func unretweet(tweetId: Int, success: @escaping () -> (), failure: @escaping (Error) -> ()){
+        let urlString = "https://api.twitter.com/1.1/statuses/unretweet/\(tweetId).json"
+        TwitterAPICaller.client?.post(urlString, parameters: ["id": tweetId], progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            success()
+        }, failure: { (_: URLSessionDataTask?, error : Error) in
+            print("Failed to call unretweets API: \(error)")
+        })
+    }
 }
