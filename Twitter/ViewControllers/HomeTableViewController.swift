@@ -117,19 +117,27 @@ class HomeTableViewController: UITableViewController {
         let tweet = tweetsArray[indexPath.row]
         
         //Sets like and tweet counts for tweets
-        //Maybe divide if >999 (quotientAndRemainder(dividingBy:)
-        //If quotient > 0 ...
-        // integer = 123
-        // integer.digits = [1,2,3]
-        //var likes_set : (Int, Int) = (tweet["favorite_count"] as! Int).quotientAndRemainder(dividingBy: 1000)
-        //var retweets_set : (Int, Int) = (tweet["retweet_count"] as! Int).quotientAndRemainder(dividingBy: 1000)
-        //let q = retweets_set.0
+        var likes_set : (Int, Int) = (tweet["favorite_count"] as! Int).quotientAndRemainder(dividingBy: 1000)
+        var retweets_set : (Int, Int) = (tweet["retweet_count"] as! Int).quotientAndRemainder(dividingBy: 1000)
         
-        let likes = tweet["favorite_count"] as! Int
-        let retweets = tweet["retweet_count"] as! Int
+        //Likes count label
+        if (likes_set.0 > 0){
+            cell.likesCountLabel.text = String(likes_set.0) + "." + String(likes_set.1).prefix(1) + "K"
+        } else {
+            cell.likesCountLabel.text = String(likes_set.1)
+        }
+        //Retweets count label
+        if (retweets_set.0 > 0){
+            cell.retweetsCountLabel.text = String(retweets_set.0) + "." + String(retweets_set.1).prefix(1) + "K"
+        } else {
+            cell.retweetsCountLabel.text = String(retweets_set.1)
+        }
         
-        cell.likesCountLabel.text = String(likes)
-        cell.retweetsCountLabel.text = String(retweets)
+        //let likes = tweet["favorite_count"] as! Int
+        //let retweets = tweet["retweet_count"] as! Int
+        
+        //cell.likesCountLabel.text = String(likes)
+        //cell.retweetsCountLabel.text = String(retweets)
         
         //Sets username and tweet
         let user = tweet["user"] as! NSDictionary

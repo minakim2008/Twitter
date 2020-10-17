@@ -51,18 +51,22 @@ class TweetCell: UITableViewCell {
         if (retweetedTweet){
             TwitterAPICaller.client?.retweet(tweetId: tweetId, success: {
                 self.setRetweeted(true)
-                //Adds to count label
-                let retweets = Int(self.retweetsCountLabel.text as! String)! + 1
-                self.retweetsCountLabel.text = String(retweets)
+                if (self.retweetsCountLabel.text?.suffix(1) != "K"){
+                    //Adds to count label
+                    let retweets = Int(self.retweetsCountLabel.text as! String)! + 1
+                    self.retweetsCountLabel.text = String(retweets)
+                }
             }, failure: { (Error) in
                 print("Falied to retweet: \(Error)")
             })
         } else {
             TwitterAPICaller.client?.unretweet(tweetId: tweetId, success: {
                 self.setRetweeted(false)
-                //Subtracts from count label
-                let retweets = Int(self.retweetsCountLabel.text as! String)! - 1
-                self.retweetsCountLabel.text = String(retweets)
+                if (self.retweetsCountLabel.text?.suffix(1) != "K"){
+                    //Subtracts from count label
+                    let retweets = Int(self.retweetsCountLabel.text as! String)! - 1
+                    self.retweetsCountLabel.text = String(retweets)
+                }
             }, failure: { (Error) in
                 print("Falied to retweet: \(Error)")
             })
@@ -83,18 +87,22 @@ class TweetCell: UITableViewCell {
         if (likedTweet){
             TwitterAPICaller.client?.favoriteTweet(tweetId: tweetId, success: {
                 self.setLiked(true)
-                //Adds to count label
-                let likes = Int(self.likesCountLabel.text as! String)! + 1
-                self.likesCountLabel.text = String(likes)
+                if (self.likesCountLabel.text?.suffix(1) != "K"){
+                    //Adds to count label
+                    let likes = Int(self.likesCountLabel.text as! String)! + 1
+                    self.likesCountLabel.text = String(likes)
+                }
             }, failure: { (Error) in
                 print("Failed to like a tweet \(Error)")
             })
         } else {
             TwitterAPICaller.client?.unfavoriteTweet(tweetId: tweetId, success: {
                 self.setLiked(false)
-                //Subtracts from count label
-                let likes = Int(self.likesCountLabel.text as! String)! - 1
-                self.likesCountLabel.text = String(likes)
+                if (self.likesCountLabel.text?.suffix(1) != "K"){
+                    //Subtracts from count label
+                    let likes = Int(self.likesCountLabel.text as! String)! - 1
+                    self.likesCountLabel.text = String(likes)
+                }
             }, failure: { (Error) in
                 print("Failed to un-like a tweet \(Error)")
             })

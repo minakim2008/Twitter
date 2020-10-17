@@ -53,7 +53,7 @@
         <scene sceneID="cI4-tt-xEl">
             <objects>
                 <tableViewController id="dc9-Vo-Opc" customClass="HomeTableViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3gp-W5-MDS">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3gp-W5-MDS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -99,7 +99,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yjM-Ay-TmR">
-                                            <rect key="frame" x="275" y="94" width="80" height="30"/>
+                                            <rect key="frame" x="290" y="94" width="80" height="30"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGQ-MD-bf9" userLabel="LikeButton">
                                                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -125,7 +125,7 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MRr-VE-t7I">
-                                            <rect key="frame" x="187" y="95" width="80" height="30"/>
+                                            <rect key="frame" x="215" y="95" width="70" height="30"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fiO-1F-gRx" userLabel="RetweetButton">
                                                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -139,10 +139,10 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVc-Y5-hnD">
-                                                    <rect key="frame" x="30" y="0.0" width="50" height="30"/>
+                                                    <rect key="frame" x="30" y="0.0" width="40" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="3ec-cU-9ls"/>
-                                                        <constraint firstAttribute="width" constant="50" id="W01-rW-tT3"/>
+                                                        <constraint firstAttribute="width" constant="40" id="W01-rW-tT3"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -158,10 +158,10 @@
                                         <constraint firstItem="Wpw-q6-57q" firstAttribute="leading" secondItem="eYb-Yr-vma" secondAttribute="trailing" constant="8" id="SFE-Iz-nST"/>
                                         <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Wpw-q6-57q" secondAttribute="trailing" constant="8" id="bHr-N9-MYR"/>
                                         <constraint firstItem="AwX-U7-kn4" firstAttribute="top" secondItem="Wpw-q6-57q" secondAttribute="bottom" constant="8" id="dev-E3-Myu"/>
-                                        <constraint firstAttribute="trailing" secondItem="yjM-Ay-TmR" secondAttribute="trailing" constant="20" id="fhw-lk-K5h"/>
+                                        <constraint firstAttribute="trailing" secondItem="yjM-Ay-TmR" secondAttribute="trailing" constant="5" id="fhw-lk-K5h"/>
                                         <constraint firstItem="AwX-U7-kn4" firstAttribute="leading" secondItem="eYb-Yr-vma" secondAttribute="trailing" constant="8" id="foE-O9-QIK"/>
                                         <constraint firstItem="eYb-Yr-vma" firstAttribute="top" secondItem="XtX-0J-Pdy" secondAttribute="topMargin" id="j16-vh-9xA"/>
-                                        <constraint firstItem="yjM-Ay-TmR" firstAttribute="leading" secondItem="MRr-VE-t7I" secondAttribute="trailing" constant="8" id="lxv-oI-ELd"/>
+                                        <constraint firstItem="yjM-Ay-TmR" firstAttribute="leading" secondItem="MRr-VE-t7I" secondAttribute="trailing" constant="5" id="lxv-oI-ELd"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="MRr-VE-t7I" secondAttribute="bottom" constant="4" id="oaZ-Tg-ncD"/>
                                         <constraint firstItem="MRr-VE-t7I" firstAttribute="top" secondItem="AwX-U7-kn4" secondAttribute="bottom" constant="8" id="okh-Tl-fgS"/>
                                         <constraint firstItem="eYb-Yr-vma" firstAttribute="leading" secondItem="XtX-0J-Pdy" secondAttribute="leadingMargin" id="tDY-J0-TeZ"/>
@@ -212,22 +212,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OZp-CE-j6k">
-                                <rect key="frame" x="8" y="44" width="359" height="135"/>
+                                <rect key="frame" x="8" y="52" width="359" height="150"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="135" id="x0X-51-GR4"/>
+                                    <constraint firstAttribute="height" constant="150" id="x0X-51-GR4"/>
                                 </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="280" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkZ-aW-rrQ">
+                                <rect key="frame" x="336" y="210" width="31" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7yT-uY-KK5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="7yT-uY-KK5" firstAttribute="trailing" secondItem="OZp-CE-j6k" secondAttribute="trailing" constant="8" id="Lpz-va-8BW"/>
                             <constraint firstItem="OZp-CE-j6k" firstAttribute="leading" secondItem="7yT-uY-KK5" secondAttribute="leading" constant="8" id="TkR-eG-Hxe"/>
-                            <constraint firstItem="OZp-CE-j6k" firstAttribute="top" secondItem="7yT-uY-KK5" secondAttribute="top" id="jKm-Tl-oPn"/>
+                            <constraint firstItem="7yT-uY-KK5" firstAttribute="trailing" secondItem="bkZ-aW-rrQ" secondAttribute="trailing" constant="8" id="aiB-AF-kCT"/>
+                            <constraint firstItem="bkZ-aW-rrQ" firstAttribute="top" secondItem="OZp-CE-j6k" secondAttribute="bottom" constant="8" id="cCh-MW-R0T"/>
+                            <constraint firstItem="OZp-CE-j6k" firstAttribute="top" secondItem="7yT-uY-KK5" secondAttribute="top" constant="8" id="jKm-Tl-oPn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WhA-8m-T2P">
@@ -245,6 +253,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="charCountLabel" destination="bkZ-aW-rrQ" id="tXD-Ok-xey"/>
                         <outlet property="tweetTextView" destination="OZp-CE-j6k" id="Zcj-y8-CT9"/>
                     </connections>
                 </viewController>
